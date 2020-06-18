@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Like from "./common/like";
 class Movie extends Component {
   render() {
-    const { movie, onDelete } = this.props;
+    const { movie, onDelete, onLike } = this.props;
     return (
       <tr>
         <td>{movie.title}</td>
@@ -10,7 +10,7 @@ class Movie extends Component {
         <td>{movie.numberInStock}</td>
         <td>{movie.dailyRentalRate}</td>
         <td>
-          <Like />
+          <Like liked={movie.like} onLike={onLike} />
         </td>
         <td>
           <button onClick={onDelete} className="btn btn-danger btn-sm">
