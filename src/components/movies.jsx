@@ -15,7 +15,9 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
-  handlePageChange = () => {};
+  handlePageChange = (page) => {
+    console.log(page);
+  };
 
   handleLike = (movie) => {
     const movies = [...this.state.movies];
