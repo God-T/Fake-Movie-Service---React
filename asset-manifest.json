@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/fake-movie-service/static/css/main.5f361e03.chunk.css",
+    "main.js": "/fake-movie-service/static/js/main.3f16536f.chunk.js",
+    "main.js.map": "/fake-movie-service/static/js/main.3f16536f.chunk.js.map",
+    "runtime-main.js": "/fake-movie-service/static/js/runtime-main.daece00c.js",
+    "runtime-main.js.map": "/fake-movie-service/static/js/runtime-main.daece00c.js.map",
+    "static/css/2.e009fad0.chunk.css": "/fake-movie-service/static/css/2.e009fad0.chunk.css",
+    "static/js/2.e3a1c7d7.chunk.js": "/fake-movie-service/static/js/2.e3a1c7d7.chunk.js",
+    "static/js/2.e3a1c7d7.chunk.js.map": "/fake-movie-service/static/js/2.e3a1c7d7.chunk.js.map",
+    "index.html": "/fake-movie-service/index.html",
+    "precache-manifest.db74dd34470fbc5fe17b7a58a654eb4e.js": "/fake-movie-service/precache-manifest.db74dd34470fbc5fe17b7a58a654eb4e.js",
+    "service-worker.js": "/fake-movie-service/service-worker.js",
+    "static/css/2.e009fad0.chunk.css.map": "/fake-movie-service/static/css/2.e009fad0.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/fake-movie-service/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.e3a1c7d7.chunk.js.LICENSE.txt": "/fake-movie-service/static/js/2.e3a1c7d7.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/fake-movie-service/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/logo.svg": "/fake-movie-service/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.daece00c.js",
+    "static/css/2.e009fad0.chunk.css",
+    "static/js/2.e3a1c7d7.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.3f16536f.chunk.js"
+  ]
+}
