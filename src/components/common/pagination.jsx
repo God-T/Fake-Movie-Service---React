@@ -2,7 +2,6 @@ import React from "react";
 import _ from "lodash";
 
 const Pagination = ({ moviesCount, pageSize, onPageChange, currPage }) => {
-  console.log(currPage);
   const pagesCount = Math.ceil(moviesCount / pageSize);
   const pages = _.range(1, pagesCount + 1);
   return (
