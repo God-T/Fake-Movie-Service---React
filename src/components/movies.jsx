@@ -26,11 +26,11 @@ class Movies extends Component {
   };
 
   render() {
-    const { length: count } = this.state.movies;
-    if (count === 0) return <p>There are no movies in the db.</p>;
+    const { length: moviesCount } = this.state.movies;
+    if (moviesCount === 0) return <p>There are no movies in the db.</p>;
     return (
       <React.Fragment>
-        <p>Showing {count} movies in the db.</p>
+        <p>Showing {moviesCount} movies in the db.</p>
         <table className="table">
           <thead>
             <tr>
@@ -54,7 +54,7 @@ class Movies extends Component {
           </tbody>
         </table>
         <Pagination
-          count={count}
+          moviesCount={moviesCount}
           pageSize={this.state.pageSize}
           onPageChange={this.handlePageChange}
         />
