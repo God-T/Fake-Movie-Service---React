@@ -19,6 +19,13 @@ class Movies extends Component {
     this.setState({ currPage: page });
   };
 
+  handleNext = (page) => {
+    this.setState({ currPage: page + 1 });
+  };
+  handlePrev = (page) => {
+    this.setState({ currPage: page - 1 });
+  };
+
   handleLike = (movie) => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
@@ -61,6 +68,8 @@ class Movies extends Component {
           pageSize={pageSize}
           currPage={currPage}
           onPageChange={this.handlePageChange}
+          onNextPage={this.handleNext}
+          onPrevPage={this.handlePrev}
         />
       </React.Fragment>
     );

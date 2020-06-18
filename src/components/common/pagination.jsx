@@ -1,14 +1,23 @@
 import React from "react";
 import _ from "lodash";
 
-const Pagination = ({ moviesCount, pageSize, onPageChange, currPage }) => {
+const Pagination = ({
+  moviesCount,
+  pageSize,
+  onPageChange,
+  currPage,
+  onNextPage,
+  onPrevPage,
+}) => {
   const pagesCount = Math.ceil(moviesCount / pageSize);
   const pages = _.range(1, pagesCount + 1);
   return (
     <nav>
       <ul className="pagination">
         <li className={currPage === 1 ? "page-item disabled" : "page-item"}>
-          <a className="page-link">Prev</a>
+          <a className="page-link" onClick={() => onPrevPage(currPage)}>
+            Prev
+          </a>
         </li>
         {pages.map((page) => (
           <li
@@ -25,7 +34,9 @@ const Pagination = ({ moviesCount, pageSize, onPageChange, currPage }) => {
             currPage === pagesCount ? "page-item disabled" : "page-item"
           }
         >
-          <a className="page-link">Next</a>
+          <a className="page-link" onClick={() => onNextPage(currPage)}>
+            Next
+          </a>
         </li>
       </ul>
     </nav>
