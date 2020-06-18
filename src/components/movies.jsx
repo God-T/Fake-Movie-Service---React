@@ -43,7 +43,7 @@ class Movies extends Component {
                 key={movie._id}
                 movie={movie}
                 onDelete={() => this.handleDelete(movie)}
-                onLike={() => this.handleLike(movie)}
+                onLikeChange={() => this.handleLike(movie)}
               />
             ))}
           </tbody>
