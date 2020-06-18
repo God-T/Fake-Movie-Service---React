@@ -3,15 +3,16 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 
 const Pagination = ({
-  moviesCount,
+  itemsCount,
   pageSize,
   onPageChange,
   currPage,
   onNextPage,
   onPrevPage,
 }) => {
-  const pagesCount = Math.ceil(moviesCount / pageSize);
+  const pagesCount = Math.ceil(itemsCount / pageSize);
   const pages = _.range(1, pagesCount + 1);
+  if (pagesCount === 1 || pagesCount === 0) return null;
   return (
     <nav>
       <ul className="pagination">
@@ -46,7 +47,7 @@ const Pagination = ({
 
 //for reuseable component
 Pagination.propTypes = {
-  moviesCount: PropTypes.number.isRequired,
+  itemsCount: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   currPage: PropTypes.number.isRequired,
