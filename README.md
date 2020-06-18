@@ -1,3 +1,5 @@
+## Published [Here](https://god-t.github.io/fake-movie-service/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
