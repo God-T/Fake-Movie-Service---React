@@ -7,7 +7,7 @@ class Movies extends Component {
   state = {
     movies: getMovies(),
     pageSize: 3,
-    currpage: 1,
+    currPage: 1,
   };
 
   handleDelete = (movie) => {
@@ -16,7 +16,7 @@ class Movies extends Component {
   };
 
   handlePageChange = (page) => {
-    console.log(page);
+    this.setState({ currPage: page });
   };
 
   handleLike = (movie) => {
@@ -28,7 +28,8 @@ class Movies extends Component {
   };
 
   render() {
-    const { length: moviesCount } = this.state.movies;
+    const { pageSize, currPage, movies } = this.state;
+    const { length: moviesCount } = movies;
     if (moviesCount === 0) return <p>There are no movies in the db.</p>;
     return (
       <React.Fragment>
@@ -45,7 +46,7 @@ class Movies extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.movies.map((movie) => (
+            {movies.map((movie) => (
               <Movie
                 key={movie._id}
                 movie={movie}
@@ -57,7 +58,8 @@ class Movies extends Component {
         </table>
         <Pagination
           moviesCount={moviesCount}
-          pageSize={this.state.pageSize}
+          pageSize={pageSize}
+          currPage={currPage}
           onPageChange={this.handlePageChange}
         />
       </React.Fragment>
