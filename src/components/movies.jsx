@@ -24,7 +24,9 @@ class Movies extends Component {
     });
   }
 
-  handleDelete = (movie) => {
+  handleDelete = ({ movie, moviesCount }) => {
+    //if its the last movie in the curr page then jump to prev page
+    if (moviesCount === 1) this.setState({ currPage: this.state.currPage - 1 });
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies });
   };
@@ -54,14 +56,16 @@ class Movies extends Component {
 
   render() {
     const { pageSize, currPage, movies, currGenre, genres } = this.state;
-    console.log(currGenre);
+    console.log(currPage);
+
     let { length: moviesCount } = movies;
     if (moviesCount === 0) return <p>There are no movies in the db.</p>;
+
     let moviesToDisplay =
       currGenre && currGenre._id
         ? movies.filter((movie) => movie.genre.name === currGenre.name)
         : movies;
-    console.log(moviesToDisplay);
+
     moviesCount = moviesToDisplay.length;
     moviesToDisplay = paginate(moviesToDisplay, currPage, pageSize);
 
@@ -83,7 +87,6 @@ class Movies extends Component {
             onDelete={this.handleDelete}
             onLikeChange={this.handleLike}
           />
-
           <Pagination
             itemsCount={moviesCount}
             pageSize={pageSize}

@@ -17,7 +17,7 @@ class MovieTable extends Component {
         </thead>
         <tbody>
           {movies.map((movie) => (
-            <tr>
+            <tr key={movie._id}>
               <td>{movie.title}</td>
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
@@ -31,7 +31,9 @@ class MovieTable extends Component {
               </td>
               <td>
                 <button
-                  onClick={() => onDelete(movie)}
+                  onClick={() =>
+                    onDelete({ movie, moviesCount: movies.length })
+                  }
                   className="btn btn-danger btn-sm"
                 >
                   X

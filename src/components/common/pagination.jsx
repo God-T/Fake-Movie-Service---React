@@ -11,8 +11,10 @@ const Pagination = ({
   onPrevPage,
 }) => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
-  const pages = _.range(1, pagesCount + 1);
+  //hide pagination if only one page or no page
   if (pagesCount === 1 || pagesCount === 0) return null;
+
+  const pages = _.range(1, pagesCount + 1);
   return (
     <nav>
       <ul className="pagination">
