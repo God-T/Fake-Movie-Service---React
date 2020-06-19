@@ -58,19 +58,14 @@ class Movies extends Component {
     this.setState({ currSortColumn });
   };
 
-  render() {
-    //object distructing
+  getPagedDate = () => {
     const {
       pageSize,
       currPage,
       movies,
       currGenre,
-      genres,
       currSortColumn,
     } = this.state;
-
-    let { length: moviesCount } = movies;
-    if (moviesCount === 0) return <p>There are no movies in the db.</p>;
 
     //filter
     let moviesToDisplay =
@@ -78,7 +73,7 @@ class Movies extends Component {
         ? movies.filter((movie) => movie.genre.name === currGenre.name)
         : movies;
     //count after filter
-    moviesCount = moviesToDisplay.length;
+    const moviesCount = moviesToDisplay.length;
     //sort
     moviesToDisplay = _.orderBy(
       moviesToDisplay,
@@ -87,6 +82,23 @@ class Movies extends Component {
     );
     //pagindate
     moviesToDisplay = paginate(moviesToDisplay, currPage, pageSize);
+    return { moviesToDisplay, moviesCount };
+  };
+
+  render() {
+    //object distructing
+    const {
+      pageSize,
+      currPage,
+      currGenre,
+      genres,
+      currSortColumn,
+    } = this.state;
+
+    let { length: count } = this.state.movies;
+    if (count === 0) return <p>There are no movies in the db.</p>;
+
+    const { moviesToDisplay, moviesCount } = this.getPagedDate();
 
     return (
       <div className="row">
