@@ -26,7 +26,7 @@ class Movies extends Component {
 
   handleDelete = ({ movie, moviesCount }) => {
     //if its the last movie in the curr page then jump to prev page
-    if (moviesCount === 1) this.setState({ currPage: this.state.currPage - 1 });
+    if (moviesCount === 1) this.handlePageChange(this.state.currPage - 1);
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies });
   };
@@ -107,6 +107,7 @@ class Movies extends Component {
             onLikeChange={this.handleLike}
             onSort={this.handleSort}
             currSortColumn={currSortColumn}
+            moviesCount={moviesToDisplay.length}
           />
           <Pagination
             itemsCount={moviesCount}

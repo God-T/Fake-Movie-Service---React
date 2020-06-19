@@ -1,14 +1,39 @@
 import React, { Component } from "react";
 import Like from "./common/like";
 import TableHead from "./common/tableHead";
+import TableBody from "./common/tableBody";
 class MovieTable extends Component {
   headers = [
     { path: "title", label: "Title" },
     { path: "genre.name", label: "Genre" },
     { path: "numberInStock", label: "Stock" },
     { path: "dailyRentalRate", label: "Rate" },
-    { key: "like" },
-    { key: "delete" },
+    {
+      key: "like",
+      content: (movie) => (
+        <Like
+          liked={movie.like}
+          movie={movie}
+          onLikeChange={this.props.onLikeChange}
+        />
+      ),
+    },
+    {
+      key: "delete",
+      content: (movie) => (
+        <button
+          onClick={() =>
+            this.props.onDelete({
+              movie,
+              moviesCount: this.props.moviesCount,
+            })
+          }
+          className="btn btn-danger btn-sm"
+        >
+          X
+        </button>
+      ),
+    },
   ];
 
   render() {
@@ -26,7 +51,13 @@ class MovieTable extends Component {
           currSortColumn={currSortColumn}
           onSort={onSort}
         />
-        <tbody>
+        <TableBody
+          bodyData={movies}
+          columnNames={this.headers}
+          onDelete={onDelete}
+          onLikeChange={onLikeChange}
+        />
+        {/* <tbody>
           {movies.map((movie) => (
             <tr key={movie._id}>
               <td>{movie.title}</td>
@@ -52,7 +83,7 @@ class MovieTable extends Component {
               </td>
             </tr>
           ))}
-        </tbody>
+        </tbody> */}
       </table>
     );
   }
