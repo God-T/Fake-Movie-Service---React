@@ -58,7 +58,7 @@ class Movies extends Component {
     this.setState({ currSortColumn });
   };
 
-  getPagedDate = () => {
+  getPagedData = () => {
     const {
       pageSize,
       currPage,
@@ -85,20 +85,41 @@ class Movies extends Component {
     return { moviesToDisplay, moviesCount };
   };
 
+  displayingData = ({ moviesToDisplay, moviesCount }) => {
+    const { pageSize, currPage, currSortColumn } = this.state;
+    return moviesCount === 0 ? (
+      <p>Showing {moviesCount} movies in the db.</p>
+    ) : (
+      <React.Fragment>
+        <p>Showing {moviesCount} movies in the db.</p>
+        <MovieTable
+          movies={moviesToDisplay}
+          onDelete={this.handleDelete}
+          onLikeChange={this.handleLike}
+          onSort={this.handleSort}
+          currSortColumn={currSortColumn}
+          moviesCount={moviesToDisplay.length}
+        />
+        <Pagination
+          itemsCount={moviesCount}
+          pageSize={pageSize}
+          currPage={currPage}
+          onPageChange={this.handlePageChange}
+          onNextPage={this.handleNext}
+          onPrevPage={this.handlePrev}
+        />
+      </React.Fragment>
+    );
+  };
+
   render() {
     //object distructing
-    const {
-      pageSize,
-      currPage,
-      currGenre,
-      genres,
-      currSortColumn,
-    } = this.state;
+    const { currGenre, genres } = this.state;
 
     let { length: count } = this.state.movies;
     if (count === 0) return <p>There are no movies in the db.</p>;
 
-    const { moviesToDisplay, moviesCount } = this.getPagedDate();
+    const dataToDisplay = this.getPagedData();
 
     return (
       <div className="row">
@@ -111,25 +132,7 @@ class Movies extends Component {
             onSelect={this.handleListGroupSelect}
           />
         </div>
-        <div className="col">
-          <p>Showing {moviesCount} movies in the db.</p>
-          <MovieTable
-            movies={moviesToDisplay}
-            onDelete={this.handleDelete}
-            onLikeChange={this.handleLike}
-            onSort={this.handleSort}
-            currSortColumn={currSortColumn}
-            moviesCount={moviesToDisplay.length}
-          />
-          <Pagination
-            itemsCount={moviesCount}
-            pageSize={pageSize}
-            currPage={currPage}
-            onPageChange={this.handlePageChange}
-            onNextPage={this.handleNext}
-            onPrevPage={this.handlePrev}
-          />
-        </div>
+        <div className="col">{this.displayingData(dataToDisplay)}</div>
       </div>
     );
   }

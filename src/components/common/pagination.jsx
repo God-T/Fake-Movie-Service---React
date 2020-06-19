@@ -12,7 +12,7 @@ const Pagination = ({
 }) => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
   //hide pagination if only one page or no page
-  if (pagesCount === 1 || pagesCount === 0) return null;
+  if (pagesCount === 1) return null;
 
   const pages = _.range(1, pagesCount + 1);
   return (
