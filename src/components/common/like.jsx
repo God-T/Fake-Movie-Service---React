@@ -1,9 +1,15 @@
 import React from "react";
 
-const Like = ({ liked, onLikeChange }) => {
+const Like = ({ liked, movie, onLikeChange }) => {
   let classN = "fa fa-heart";
   if (!liked) classN += "-o";
-  return <i onClick={onLikeChange} className={classN} aria-hidden="true"></i>;
+  return (
+    <i
+      onClick={() => onLikeChange(movie)}
+      className={classN}
+      aria-hidden="true"
+    ></i>
+  );
 };
 
 export default Like;

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import Movie from "./movie";
+import movieTable from "./movieTable";
 
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import Pagination from "./common/pagination";
 import { paginate } from "../uilts/paginate";
 import ListGroup from "./common/listGroup";
+import MovieTable from "./movieTable";
 
 class Movies extends Component {
   state = {
@@ -77,28 +78,12 @@ class Movies extends Component {
         </div>
         <div className="col">
           <p>Showing {moviesCount} movies in the db.</p>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Stock</th>
-                <th>Rate</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {moviesToDisplay.map((movie) => (
-                <Movie
-                  key={movie._id}
-                  movie={movie}
-                  onDelete={() => this.handleDelete(movie)}
-                  onLikeChange={() => this.handleLike(movie)}
-                />
-              ))}
-            </tbody>
-          </table>
+          <MovieTable
+            movies={moviesToDisplay}
+            onDelete={this.handleDelete}
+            onLikeChange={this.handleLike}
+          />
+
           <Pagination
             itemsCount={moviesCount}
             pageSize={pageSize}
