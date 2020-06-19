@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import movieTable from "./movieTable";
-
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import Pagination from "./common/pagination";
 import { paginate } from "../uilts/paginate";
 import ListGroup from "./common/listGroup";
 import MovieTable from "./movieTable";
+import _ from "lodash";
 
 class Movies extends Component {
   state = {
@@ -15,6 +14,7 @@ class Movies extends Component {
     pageSize: 3,
     currPage: 1,
     currGenre: "",
+    currSortColumn: { path: "title", order: "asc" },
   };
 
   componentDidMount() {
@@ -54,19 +54,38 @@ class Movies extends Component {
     this.setState({ currGenre: group, currPage: 1 });
   };
 
+  handleSort = (currSortColumn) => {
+    this.setState({ currSortColumn });
+  };
+
   render() {
-    const { pageSize, currPage, movies, currGenre, genres } = this.state;
-    console.log(currPage);
+    //object distructing
+    const {
+      pageSize,
+      currPage,
+      movies,
+      currGenre,
+      genres,
+      currSortColumn,
+    } = this.state;
 
     let { length: moviesCount } = movies;
     if (moviesCount === 0) return <p>There are no movies in the db.</p>;
 
+    //filter
     let moviesToDisplay =
       currGenre && currGenre._id
         ? movies.filter((movie) => movie.genre.name === currGenre.name)
         : movies;
-
+    //count after filter
     moviesCount = moviesToDisplay.length;
+    //sort
+    moviesToDisplay = _.orderBy(
+      moviesToDisplay,
+      [currSortColumn.path],
+      [currSortColumn.order]
+    );
+    //pagindate
     moviesToDisplay = paginate(moviesToDisplay, currPage, pageSize);
 
     return (
@@ -86,6 +105,8 @@ class Movies extends Component {
             movies={moviesToDisplay}
             onDelete={this.handleDelete}
             onLikeChange={this.handleLike}
+            onSort={this.handleSort}
+            currSortColumn={currSortColumn}
           />
           <Pagination
             itemsCount={moviesCount}
