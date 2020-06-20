@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/fake-movie-service/static/css/main.0d0ab665.chunk.css",
-    "main.js": "/fake-movie-service/static/js/main.8812869d.chunk.js",
-    "main.js.map": "/fake-movie-service/static/js/main.8812869d.chunk.js.map",
-    "runtime-main.js": "/fake-movie-service/static/js/runtime-main.daece00c.js",
-    "runtime-main.js.map": "/fake-movie-service/static/js/runtime-main.daece00c.js.map",
-    "static/css/2.e009fad0.chunk.css": "/fake-movie-service/static/css/2.e009fad0.chunk.css",
-    "static/js/2.c2ee927a.chunk.js": "/fake-movie-service/static/js/2.c2ee927a.chunk.js",
-    "static/js/2.c2ee927a.chunk.js.map": "/fake-movie-service/static/js/2.c2ee927a.chunk.js.map",
-    "index.html": "/fake-movie-service/index.html",
-    "precache-manifest.e65630735f2e529b1d3c339e1b0272bd.js": "/fake-movie-service/precache-manifest.e65630735f2e529b1d3c339e1b0272bd.js",
-    "service-worker.js": "/fake-movie-service/service-worker.js",
-    "static/css/2.e009fad0.chunk.css.map": "/fake-movie-service/static/css/2.e009fad0.chunk.css.map",
-    "static/css/main.0d0ab665.chunk.css.map": "/fake-movie-service/static/css/main.0d0ab665.chunk.css.map",
-    "static/js/2.c2ee927a.chunk.js.LICENSE.txt": "/fake-movie-service/static/js/2.c2ee927a.chunk.js.LICENSE.txt",
-    "static/media/font-awesome.css": "/fake-movie-service/static/media/fontawesome-webfont.fee66e71.woff"
+    "main.css": "/Fake-Movie-Service-React/static/css/main.0d0ab665.chunk.css",
+    "main.js": "/Fake-Movie-Service-React/static/js/main.0f00ce46.chunk.js",
+    "main.js.map": "/Fake-Movie-Service-React/static/js/main.0f00ce46.chunk.js.map",
+    "runtime-main.js": "/Fake-Movie-Service-React/static/js/runtime-main.12c677e6.js",
+    "runtime-main.js.map": "/Fake-Movie-Service-React/static/js/runtime-main.12c677e6.js.map",
+    "static/css/2.92164ad5.chunk.css": "/Fake-Movie-Service-React/static/css/2.92164ad5.chunk.css",
+    "static/js/2.c2ee927a.chunk.js": "/Fake-Movie-Service-React/static/js/2.c2ee927a.chunk.js",
+    "static/js/2.c2ee927a.chunk.js.map": "/Fake-Movie-Service-React/static/js/2.c2ee927a.chunk.js.map",
+    "index.html": "/Fake-Movie-Service-React/index.html",
+    "precache-manifest.ed204df5b929848d80fa661ca1799692.js": "/Fake-Movie-Service-React/precache-manifest.ed204df5b929848d80fa661ca1799692.js",
+    "service-worker.js": "/Fake-Movie-Service-React/service-worker.js",
+    "static/css/2.92164ad5.chunk.css.map": "/Fake-Movie-Service-React/static/css/2.92164ad5.chunk.css.map",
+    "static/css/main.0d0ab665.chunk.css.map": "/Fake-Movie-Service-React/static/css/main.0d0ab665.chunk.css.map",
+    "static/js/2.c2ee927a.chunk.js.LICENSE.txt": "/Fake-Movie-Service-React/static/js/2.c2ee927a.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/Fake-Movie-Service-React/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.daece00c.js",
-    "static/css/2.e009fad0.chunk.css",
+    "static/js/runtime-main.12c677e6.js",
+    "static/css/2.92164ad5.chunk.css",
     "static/js/2.c2ee927a.chunk.js",
     "static/css/main.0d0ab665.chunk.css",
-    "static/js/main.8812869d.chunk.js"
+    "static/js/main.0f00ce46.chunk.js"
   ]
 }
