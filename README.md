@@ -1,5 +1,7 @@
 ## Published [Here](https://god-t.github.io/Fake-Movie-Service-React/)
 
+Follow the tutorial on [code with mosh](https://codewithmosh.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
