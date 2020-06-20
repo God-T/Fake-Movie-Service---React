@@ -1,4 +1,4 @@
-## Published [Here](https://god-t.github.io/React-A-Fake-Movie-Service/)
+## Published [Here](https://god-t.github.io/Fake-Movie-Service-React/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
