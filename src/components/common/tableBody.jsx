@@ -6,7 +6,7 @@ class TableBody extends Component {
     if (colName.content) {
       return colName.content(item);
     }
-    return _.get(item, colName.path);
+    return _.get(item, colName.path); //handle muti path of objects e.g item.genre.name
   };
 
   generateKey = (item, colName) => {
@@ -14,7 +14,7 @@ class TableBody extends Component {
   };
 
   render() {
-    const { bodyData, columnNames, moviesCount } = this.props;
+    const { bodyData, columnNames } = this.props;
     return (
       <tbody>
         {bodyData.map((item) => (

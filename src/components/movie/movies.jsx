@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { getMovies } from "../services/fakeMovieService";
-import { getGenres } from "../services/fakeGenreService";
-import Pagination from "./common/pagination";
-import { paginate } from "../uilts/paginate";
-import ListGroup from "./common/listGroup";
+import { getMovies } from "../../services/fakeMovieService";
+import { getGenres } from "../../services/fakeGenreService";
+import Pagination from "../common/pagination";
+import { paginate } from "../../uilts/paginate";
+import ListGroup from "../common/listGroup";
 import MovieTable from "./movieTable";
 import _ from "lodash";
 
@@ -123,7 +123,7 @@ class Movies extends Component {
 
     return (
       <div className="row">
-        <div className="col-2">
+        <div className="col-3">
           <ListGroup
             items={genres}
             textProperty="name"

@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import Movies from "./components/movies";
+import Home from "./components/home";
+import Movies from "./components/movie/movies";
 import "./App.css";
 
 class App extends Component {
-  state = {};
   render() {
     return (
       <main className="container">
-        <h1>A Fake Movie Service</h1>
-        <Movies />
+        <Home />
       </main>
     );
   }
