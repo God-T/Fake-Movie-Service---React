@@ -123,7 +123,7 @@ class Movies extends Component {
 
     return (
       <div className="row">
-        <div className="col-3">
+        <div className="col-2">
           <ListGroup
             items={genres}
             textProperty="name"

@@ -10,8 +10,10 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBarHome />
-        <div className="content">
+        <header>
+          <NavBarHome />
+        </header>
+        <div className="container">
           <Switch>
             {/* switch order with: most specific one --> generate one*/}
 
