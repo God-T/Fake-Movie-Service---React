@@ -9,10 +9,26 @@ class LoginForm extends Component {
 
   state = {
     account: { username: "", password: "" },
+    errors: {},
+  };
+
+  validate = () => {
+    const errors = {};
+    const { account } = this.state;
+    if (account.username.trim() === "") errors.username = "Username required";
+    if (account.password.trim() === "") errors.password = "Password required";
+
+    return Object.keys(errors).length === 0 ? null : errors;
   };
 
   handleSumbit = (event) => {
     event.preventDefault();
+
+    //handling errors
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
+    if (errors) return;
+
     //call the server
     console.log("submitted");
   };
@@ -24,7 +40,7 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { account } = this.state;
+    const { account, errors } = this.state;
     return (
       <div>
         <h1>login</h1>
@@ -33,12 +49,14 @@ class LoginForm extends Component {
             name="username"
             label="Username"
             value={account.username}
+            error={errors.username}
             onChange={this.handleChange}
           />
           <Input
             name="password"
             label="Password"
             value={account.password}
+            error={errors.password}
             onChange={this.handleChange}
           />
           <div className="form-group form-check">
