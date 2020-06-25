@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "./common/input";
+import Joi from "@hapi/joi";
 class LoginForm extends Component {
   //Refs
   //username = React.createRef();
@@ -12,13 +13,26 @@ class LoginForm extends Component {
     errors: {},
   };
 
-  validate = () => {
-    const errors = {};
-    const { account } = this.state;
-    if (account.username.trim() === "") errors.username = "Username required";
-    if (account.password.trim() === "") errors.password = "Password required";
+  schema = {
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
+  };
 
-    return Object.keys(errors).length === 0 ? null : errors;
+  //handle Joi validation
+  validate = () => {
+    const options = { abortEarly: false };
+    const { error } = Joi.object(this.schema).validate(
+      this.state.account,
+      options
+    );
+    if (!error) return null;
+    //destruct error message from Joi
+    const errors = {};
+    error.details.map((item) => {
+      errors[item.path[0]] = item.message;
+    });
+    // console.log(errors);
+    return errors;
   };
 
   handleSumbit = (event) => {
@@ -33,12 +47,13 @@ class LoginForm extends Component {
     console.log("submitted");
   };
 
+  //validate property by runtime typing
   validateProperty = ({ name, value }) => {
-    if (name === "username") {
-      if (value.trim() === "") return "Username is required";
-    } else if (name === "password") {
-      if (value.trim() === "") return "Password is required";
-    }
+    const obj = { [name]: value };
+    const schema = Joi.object({ [name]: this.schema[name] });
+    // console.log({ [name]: this.schema[name] });
+    const { error } = schema.validate(obj);
+    return error ? error.details[0].message : null;
   };
 
   handleChange = ({ currentTarget: input }) => {
