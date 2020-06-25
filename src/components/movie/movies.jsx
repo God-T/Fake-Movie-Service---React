@@ -13,7 +13,7 @@ class Movies extends Component {
     genres: [],
     pageSize: 3,
     currPage: 1,
-    currGenre: "",
+    currGenre: { name: "All", _id: null },
     currSortColumn: { path: "title", order: "asc" },
   };
 

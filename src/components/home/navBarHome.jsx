@@ -20,7 +20,7 @@ const NavBarHome = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
-          <li className="nav-item active">
+          <li className="nav-item">
             <NavLink className="nav-item nav-link" to="/movies">
               Movies
             </NavLink>
@@ -33,6 +33,11 @@ const NavBarHome = () => {
           <li className="nav-item">
             <NavLink className="nav-item nav-link" to="/rentals">
               Rentals
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-item nav-link" to="/login">
+              Login
             </NavLink>
           </li>
         </ul>

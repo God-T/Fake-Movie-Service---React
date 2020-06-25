@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import NavBarHome from "./home/navBarHome";
-import Movies from "./movie/movies";
-import Dummy from "./home/dummy";
 import { Link, Route, Switch, Redirect } from "react-router-dom";
-import NotFound from "./notFound";
-import MovieForm from "./movie/movieForm";
+
+import NavBarHome from "./navBarHome";
+import Movies from "../movie/movies";
+import NotFound from "../notFound";
+import MovieForm from "../movie/movieForm";
+import LoginForm from "./../loginForm";
 
 class Home extends Component {
   render() {
@@ -16,7 +17,7 @@ class Home extends Component {
         <div className="container">
           <Switch>
             {/* switch order with: most specific one --> generate one*/}
-
+            <Route path="/login" component={LoginForm} />
             <Route path="/movies/:id" component={MovieForm} />
             <Route path="/movies" component={Movies} />
             <Route path="/customers" render={() => <p>Customers</p>} />
