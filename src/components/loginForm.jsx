@@ -1,16 +1,26 @@
 import React, { Component } from "react";
 
 class LoginForm extends Component {
-  username = React.createRef();
-
+  //Refs
+  //username = React.createRef();
   //   componentDidMount() {
   //     this.username.current.focus();
   //   }
 
-  handleSumbit = (e) => {
-    e.preventDefault();
+  state = {
+    account: { username: "", password: "" },
+  };
+
+  handleSumbit = (event) => {
+    event.preventDefault();
     //call the server
     console.log("submitted");
+  };
+
+  handleChange = (event) => {
+    const account = { ...this.state.account };
+    account.username = event.currentTarget.value;
+    this.setState({ account });
   };
 
   render() {
@@ -26,6 +36,8 @@ class LoginForm extends Component {
               type="text"
               className="form-control"
               id="username"
+              value={this.state.account.username}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
@@ -33,7 +45,12 @@ class LoginForm extends Component {
             <input type="password" className="form-control" id="password" />
           </div>
           <div className="form-group form-check">
-            <input type="checkbox" className="form-check-input" id="save ps" />
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="save ps"
+              value={this.state.account.password}
+            />
             <label className="form-check-label" htmlFor="save ps">
               Save the passwords
             </label>
