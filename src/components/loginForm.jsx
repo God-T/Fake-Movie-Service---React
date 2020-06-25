@@ -17,13 +17,14 @@ class LoginForm extends Component {
     console.log("submitted");
   };
 
-  handleChange = (event) => {
+  handleChange = ({ currentTarget: input }) => {
     const account = { ...this.state.account };
-    account.username = event.currentTarget.value;
+    account[input.name] = input.value;
     this.setState({ account });
   };
 
   render() {
+    const { account } = this.state;
     return (
       <div>
         <h1>login</h1>
@@ -36,21 +37,24 @@ class LoginForm extends Component {
               type="text"
               className="form-control"
               id="username"
-              value={this.state.account.username}
+              name="username"
+              value={account.username}
               onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" />
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={account.password}
+              onChange={this.handleChange}
+            />
           </div>
           <div className="form-group form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="save ps"
-              value={this.state.account.password}
-            />
+            <input type="checkbox" className="form-check-input" id="save ps" />
             <label className="form-check-label" htmlFor="save ps">
               Save the passwords
             </label>
