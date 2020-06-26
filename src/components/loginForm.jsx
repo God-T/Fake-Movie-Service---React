@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Input from "./common/input";
 import Joi from "@hapi/joi";
-class LoginForm extends Component {
+import Form from "./common/form";
+class LoginForm extends Form {
   //Refs
   //username = React.createRef();
   //   componentDidMount() {
@@ -9,7 +9,7 @@ class LoginForm extends Component {
   //   }
 
   state = {
-    account: { username: "", password: "" },
+    data: { username: "", password: "" },
     errors: {},
   };
 
@@ -18,42 +18,9 @@ class LoginForm extends Component {
     password: Joi.string().required().label("Password"),
   };
 
-  //handle Joi validation
-  validate = () => {
-    const options = { abortEarly: false };
-    const { error } = Joi.object(this.schema).validate(
-      this.state.account,
-      options
-    );
-    if (!error) return null;
-    //destruct error message from Joi
-    const errors = {};
-    error.details.map((item) => {
-      errors[item.path[0]] = item.message;
-    });
-    // console.log(errors);
-    return errors;
-  };
-
-  handleSumbit = (event) => {
-    event.preventDefault();
-
-    //handling errors
-    const errors = this.validate();
-    this.setState({ errors: errors || {} });
-    if (errors) return;
-
+  doSubmit = () => {
     //call the server
     console.log("submitted");
-  };
-
-  //validate property by runtime typing
-  validateProperty = ({ name, value }) => {
-    const obj = { [name]: value };
-    const schema = Joi.object({ [name]: this.schema[name] });
-    // console.log({ [name]: this.schema[name] });
-    const { error } = schema.validate(obj);
-    return error ? error.details[0].message : null;
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -63,41 +30,20 @@ class LoginForm extends Component {
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
     //update account
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account, errors });
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+    this.setState({ data, errors });
   };
 
   render() {
-    const { account, errors } = this.state;
     return (
       <div>
         <h1>login</h1>
         <form onSubmit={this.handleSumbit}>
-          <Input
-            name="username"
-            label="Username"
-            value={account.username}
-            error={errors.username}
-            onChange={this.handleChange}
-          />
-          <Input
-            name="password"
-            label="Password"
-            value={account.password}
-            error={errors.password}
-            onChange={this.handleChange}
-          />
-          <div className="form-group form-check">
-            <input type="checkbox" className="form-check-input" id="save ps" />
-            <label className="form-check-label" htmlFor="save ps">
-              Save the passwords
-            </label>
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
+          {this.renderInput("username", "Username")}
+          {this.renderInput("password", "Password", "password")}
         </form>
+        {this.renderButton("Login")}
       </div>
     );
   }
