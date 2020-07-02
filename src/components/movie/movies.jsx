@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { getMovies } from "../../services/fakeMovieService";
+import { Link } from "react-router-dom";
+import _ from "lodash";
+
+import {
+  getMovies,
+  deleteMovie,
+  changeLikeMovie,
+} from "../../services/fakeMovieService";
 import { getGenres } from "../../services/fakeGenreService";
 import Pagination from "../common/pagination";
 import { paginate } from "../../uilts/paginate";
 import ListGroup from "../common/listGroup";
 import MovieTable from "./movieTable";
-import _ from "lodash";
 
 class Movies extends Component {
   state = {
@@ -25,6 +31,7 @@ class Movies extends Component {
   }
 
   handleDelete = ({ movie, moviesCount }) => {
+    deleteMovie(movie._id); //delete "db"
     //if its the last movie in the curr page then jump to prev page
     if (moviesCount === 1) this.handlePageChange(this.state.currPage - 1);
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
@@ -35,19 +42,13 @@ class Movies extends Component {
     this.setState({ currPage: page });
   };
 
-  handleNext = (page) => {
-    this.setState({ currPage: page + 1 });
-  };
-  handlePrev = (page) => {
-    this.setState({ currPage: page - 1 });
-  };
-
   handleLike = (movie) => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = { ...movie };
     movies[index].like = !movie.like;
     this.setState({ movies });
+    changeLikeMovie(movie._id); //change "db"
   };
 
   handleListGroupSelect = (group) => {
@@ -85,42 +86,10 @@ class Movies extends Component {
     return { moviesToDisplay, moviesCount };
   };
 
-  displayingData = ({ moviesToDisplay, moviesCount }) => {
-    const { pageSize, currPage, currSortColumn } = this.state;
-    return moviesCount === 0 ? (
-      <p>Showing {moviesCount} movies in the db.</p>
-    ) : (
-      <React.Fragment>
-        <p>Showing {moviesCount} movies in the db.</p>
-        <MovieTable
-          movies={moviesToDisplay}
-          onDelete={this.handleDelete}
-          onLikeChange={this.handleLike}
-          onSort={this.handleSort}
-          currSortColumn={currSortColumn}
-          moviesCount={moviesToDisplay.length}
-        />
-        <Pagination
-          itemsCount={moviesCount}
-          pageSize={pageSize}
-          currPage={currPage}
-          onPageChange={this.handlePageChange}
-          onNextPage={this.handleNext}
-          onPrevPage={this.handlePrev}
-        />
-      </React.Fragment>
-    );
-  };
-
   render() {
     //object distructing
     const { currGenre, genres } = this.state;
-
-    let { length: count } = this.state.movies;
-    if (count === 0) return <p>There are no movies in the db.</p>;
-
     const dataToDisplay = this.getPagedData();
-
     return (
       <div className="row">
         <div className="col-2">
@@ -136,6 +105,47 @@ class Movies extends Component {
       </div>
     );
   }
+
+  movieFormLink() {
+    return (
+      <Link to="/movies/new">
+        <button className="btn btn-primary btn-sm">+ New Movie</button>
+      </Link>
+    );
+  }
+
+  displayingData = ({ moviesToDisplay, moviesCount }) => {
+    const { pageSize, currPage, currSortColumn } = this.state;
+    return moviesCount === 0 ? (
+      <React.Fragment>
+        <p style={{ marginRight: "20px", display: "inline-block" }}>
+          There are no movies in the db.
+        </p>
+        {this.movieFormLink()}
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        <p style={{ marginRight: "20px", display: "inline-block" }}>
+          Showing {moviesCount} movies in the db.
+        </p>
+        {this.movieFormLink()}
+        <MovieTable
+          movies={moviesToDisplay}
+          onDelete={this.handleDelete}
+          onLikeChange={this.handleLike}
+          onSort={this.handleSort}
+          currSortColumn={currSortColumn}
+          moviesCount={moviesToDisplay.length}
+        />
+        <Pagination
+          itemsCount={moviesCount}
+          pageSize={pageSize}
+          currPage={currPage}
+          onPageChange={this.handlePageChange}
+        />
+      </React.Fragment>
+    );
+  };
 }
 
 export default Movies;

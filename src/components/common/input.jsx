@@ -1,14 +1,13 @@
 import React from "react";
 
 const Input = ({ name, label, error, ...rest }) => {
-  console.log(rest);
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input
         //   ref={this.username}
         {...rest} //wow!
-        autoFocus
+        // autoFocus
         className="form-control"
         id={name}
         name={name}

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Joi from "@hapi/joi";
 import Form from "./common/form";
 class LoginForm extends Form {
@@ -20,30 +20,18 @@ class LoginForm extends Form {
 
   doSubmit = () => {
     //call the server
-    console.log("submitted");
-  };
-
-  handleChange = ({ currentTarget: input }) => {
-    //error check
-    const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(input);
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
-    //update account
-    const data = { ...this.state.data };
-    data[input.name] = input.value;
-    this.setState({ data, errors });
+    console.log("logged in");
   };
 
   render() {
     return (
       <div>
-        <h1>login</h1>
-        <form onSubmit={this.handleSumbit}>
+        <h1>Login</h1>
+        <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username")}
           {this.renderInput("password", "Password", "password")}
+          {this.renderButton("Login")}
         </form>
-        {this.renderButton("Login")}
       </div>
     );
   }

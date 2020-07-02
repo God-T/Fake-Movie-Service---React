@@ -34,6 +34,7 @@ class MovieTable extends Component {
               moviesCount: this.props.moviesCount,
             })
           }
+          style={{ paddingLeft: "10px", paddingRight: "10px" }}
           className="btn btn-danger btn-sm"
         >
           X

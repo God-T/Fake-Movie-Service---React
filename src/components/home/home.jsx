@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Link, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import NavBarHome from "./navBarHome";
 import Movies from "../movie/movies";
 import NotFound from "../notFound";
 import MovieForm from "../movie/movieForm";
 import LoginForm from "./../loginForm";
+import RegisterForm from "./../registerForm";
 
 class Home extends Component {
   render() {
@@ -18,8 +19,9 @@ class Home extends Component {
           <Switch>
             {/* switch order with: most specific one --> generate one*/}
             <Route path="/login" component={LoginForm} />
+            <Route path="/register" component={RegisterForm} />
             <Route path="/movies/:id" component={MovieForm} />
-            <Route path="/movies" component={Movies} />
+            <Route exact path="/movies" component={Movies} />
             <Route path="/customers" render={() => <p>Customers</p>} />
             <Route path="/rentals" render={() => <p>Rentals</p>} />
             <Route path="/not-found" component={NotFound} />

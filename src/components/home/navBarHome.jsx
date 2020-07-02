@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink, Link } from "react-router-dom"; //prevent full page reload
 
 const NavBarHome = () => {
@@ -38,6 +38,11 @@ const NavBarHome = () => {
           <li className="nav-item">
             <NavLink className="nav-item nav-link" to="/login">
               Login
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-item nav-link" to="/register">
+              Register
             </NavLink>
           </li>
         </ul>

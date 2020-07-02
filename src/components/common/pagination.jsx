@@ -2,14 +2,7 @@ import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 
-const Pagination = ({
-  itemsCount,
-  pageSize,
-  onPageChange,
-  currPage,
-  onNextPage,
-  onPrevPage,
-}) => {
+const Pagination = ({ itemsCount, pageSize, onPageChange, currPage }) => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
   //hide pagination if only one page or no page
   if (pagesCount === 1) return null;
@@ -19,7 +12,7 @@ const Pagination = ({
     <nav>
       <ul className="pagination">
         <li className={currPage === 1 ? "page-item disabled" : "page-item"}>
-          <a className="page-link" onClick={() => onPrevPage(currPage)}>
+          <a className="page-link" onClick={() => onPageChange(currPage - 1)}>
             Prev
           </a>
         </li>
@@ -38,7 +31,7 @@ const Pagination = ({
             currPage === pagesCount ? "page-item disabled" : "page-item"
           }
         >
-          <a className="page-link" onClick={() => onNextPage(currPage)}>
+          <a className="page-link" onClick={() => onPageChange(currPage + 1)}>
             Next
           </a>
         </li>
@@ -53,8 +46,6 @@ Pagination.propTypes = {
   pageSize: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   currPage: PropTypes.number.isRequired,
-  onNextPage: PropTypes.func.isRequired,
-  onPrevPage: PropTypes.func.isRequired,
 };
 
 export default Pagination;

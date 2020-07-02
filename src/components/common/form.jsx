@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "./input";
 import Joi from "@hapi/joi";
+import Select from "./select";
 
 class Form extends Component {
   state = {
@@ -27,29 +28,60 @@ class Form extends Component {
   validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schema = Joi.object({ [name]: this.schema[name] });
-    // console.log({ [name]: this.schema[name] });
     const { error } = schema.validate(obj);
     return error ? error.details[0].message : null;
   };
 
-  handleSumbit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     //handling errors
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
+    this.doSubmit();
   };
 
-  renderButton = (label) => {
+  doSubmit = () => {
+    console.log("submit");
+  };
+
+  handleChange = ({ currentTarget: input }) => {
+    //error check
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+    //update
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+    this.setState({ data, errors });
+  };
+
+  renderButton = (label, ...rest) => {
     return (
       <button
         type="submit"
         disabled={this.validate()}
         className="btn btn-primary"
+        {...rest}
       >
         {label}
       </button>
+    );
+  };
+
+  renderSelect = (name, label, options) => {
+    const { data, errors } = this.state;
+    return (
+      <Select
+        name={name}
+        label={label}
+        options={options}
+        value={data[name]}
+        error={errors[name]}
+        onChange={this.handleChange}
+      />
     );
   };
 
