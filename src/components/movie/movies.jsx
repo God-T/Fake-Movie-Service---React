@@ -12,6 +12,7 @@ import Pagination from "../common/pagination";
 import { paginate } from "../../uilts/paginate";
 import ListGroup from "../common/listGroup";
 import MovieTable from "./movieTable";
+import SearchBar from "../common/searchBar";
 
 class Movies extends Component {
   state = {
@@ -21,6 +22,7 @@ class Movies extends Component {
     currPage: 1,
     currGenre: { name: "All", _id: null },
     currSortColumn: { path: "title", order: "asc" },
+    currSearchQuery: "",
   };
 
   componentDidMount() {
@@ -38,10 +40,6 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
-  handlePageChange = (page) => {
-    this.setState({ currPage: page });
-  };
-
   handleLike = (movie) => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
@@ -51,12 +49,20 @@ class Movies extends Component {
     changeLikeMovie(movie._id); //change "db"
   };
 
-  handleListGroupSelect = (group) => {
+  handlePageChange = (page) => {
+    this.setState({ currPage: page });
+  };
+
+  handleGenreSelect = (group) => {
     this.setState({ currGenre: group, currPage: 1 });
   };
 
   handleSort = (currSortColumn) => {
     this.setState({ currSortColumn });
+  };
+
+  handleSearch = (currSearchQuery) => {
+    this.setState({ currSearchQuery });
   };
 
   getPagedData = () => {
@@ -66,22 +72,26 @@ class Movies extends Component {
       movies,
       currGenre,
       currSortColumn,
+      currSearchQuery,
     } = this.state;
-
-    //filter
+    //filt by genre:
     let moviesToDisplay =
       currGenre && currGenre._id
         ? movies.filter((movie) => movie.genre.name === currGenre.name)
         : movies;
-    //count after filter
+    //filt by searchQuery:
+    moviesToDisplay = moviesToDisplay.filter((movie) =>
+      movie.title.toLowerCase().includes(currSearchQuery)
+    );
+    //count after filter:
     const moviesCount = moviesToDisplay.length;
-    //sort
+    //sort:
     moviesToDisplay = _.orderBy(
       moviesToDisplay,
       [currSortColumn.path],
       [currSortColumn.order]
     );
-    //pagindate
+    //pagindate:
     moviesToDisplay = paginate(moviesToDisplay, currPage, pageSize);
     return { moviesToDisplay, moviesCount };
   };
@@ -98,7 +108,7 @@ class Movies extends Component {
             textProperty="name"
             valueProperty="_id"
             selectedGroupTextProperty={currGenre.name}
-            onSelect={this.handleListGroupSelect}
+            onSelect={this.handleGenreSelect}
           />
         </div>
         <div className="col">{this.displayingData(dataToDisplay)}</div>
@@ -106,11 +116,17 @@ class Movies extends Component {
     );
   }
 
-  movieFormLink() {
+  movieTableFuncs() {
     return (
-      <Link to="/movies/new">
-        <button className="btn btn-primary btn-sm">+ New Movie</button>
-      </Link>
+      <React.Fragment>
+        <Link to="/movies/new">
+          <button className="btn btn-primary btn-sm">+ New Movie</button>
+        </Link>
+        <SearchBar
+          value={this.state.currSearchQuery}
+          onChange={this.handleSearch}
+        />
+      </React.Fragment>
     );
   }
 
@@ -121,14 +137,14 @@ class Movies extends Component {
         <p style={{ marginRight: "20px", display: "inline-block" }}>
           There are no movies in the db.
         </p>
-        {this.movieFormLink()}
+        {this.movieTableFuncs()}
       </React.Fragment>
     ) : (
       <React.Fragment>
         <p style={{ marginRight: "20px", display: "inline-block" }}>
           Showing {moviesCount} movies in the db.
         </p>
-        {this.movieFormLink()}
+        {this.movieTableFuncs()}
         <MovieTable
           movies={moviesToDisplay}
           onDelete={this.handleDelete}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "./input";
+import InputForm from "./inputForm";
 import Joi from "@hapi/joi";
 import Select from "./select";
 
@@ -88,7 +88,7 @@ class Form extends Component {
   renderInput = (name, label, type = "text") => {
     const { data, errors } = this.state;
     return (
-      <Input
+      <InputForm
         type={type}
         name={name}
         label={label}

@@ -52,7 +52,6 @@ class MovieForm extends Form {
 
   doSubmit = () => {
     console.log("movie form saved");
-
     saveMovie(this.state.data);
     this.props.history.push("/movies"); //rerendering
   };
@@ -71,21 +70,6 @@ class MovieForm extends Form {
       </div>
     );
   }
-
-  // render() {
-  //   const { match, history } = this.props;
-  //   return (
-  //     <div>
-  //       <p> Movie Form: {match.params.id}</p>
-  //       <button
-  //         className="btn btn-primary"
-  //         onClick={() => history.push("/movies")}
-  //       >
-  //         Save
-  //       </button>
-  //     </div>
-  //   );
-  // }
 }
 
 export default MovieForm;
