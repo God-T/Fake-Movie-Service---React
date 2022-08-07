@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Fake-Movie-Service-React/static/css/main.8bded530.chunk.css",
-    "main.js": "/Fake-Movie-Service-React/static/js/main.e92be5a7.chunk.js",
-    "main.js.map": "/Fake-Movie-Service-React/static/js/main.e92be5a7.chunk.js.map",
-    "runtime-main.js": "/Fake-Movie-Service-React/static/js/runtime-main.12c677e6.js",
-    "runtime-main.js.map": "/Fake-Movie-Service-React/static/js/runtime-main.12c677e6.js.map",
-    "static/css/2.92164ad5.chunk.css": "/Fake-Movie-Service-React/static/css/2.92164ad5.chunk.css",
-    "static/js/2.e5ef986f.chunk.js": "/Fake-Movie-Service-React/static/js/2.e5ef986f.chunk.js",
-    "static/js/2.e5ef986f.chunk.js.map": "/Fake-Movie-Service-React/static/js/2.e5ef986f.chunk.js.map",
-    "index.html": "/Fake-Movie-Service-React/index.html",
-    "precache-manifest.39097a220cd0bceba00a162a6419d2db.js": "/Fake-Movie-Service-React/precache-manifest.39097a220cd0bceba00a162a6419d2db.js",
-    "service-worker.js": "/Fake-Movie-Service-React/service-worker.js",
-    "static/css/2.92164ad5.chunk.css.map": "/Fake-Movie-Service-React/static/css/2.92164ad5.chunk.css.map",
-    "static/css/main.8bded530.chunk.css.map": "/Fake-Movie-Service-React/static/css/main.8bded530.chunk.css.map",
-    "static/js/2.e5ef986f.chunk.js.LICENSE.txt": "/Fake-Movie-Service-React/static/js/2.e5ef986f.chunk.js.LICENSE.txt",
-    "static/media/font-awesome.css": "/Fake-Movie-Service-React/static/media/fontawesome-webfont.fee66e71.woff"
+    "main.css": "/Fake-movie-service---ReactJS/static/css/main.8bded530.chunk.css",
+    "main.js": "/Fake-movie-service---ReactJS/static/js/main.84a12bef.chunk.js",
+    "main.js.map": "/Fake-movie-service---ReactJS/static/js/main.84a12bef.chunk.js.map",
+    "runtime-main.js": "/Fake-movie-service---ReactJS/static/js/runtime-main.706d38da.js",
+    "runtime-main.js.map": "/Fake-movie-service---ReactJS/static/js/runtime-main.706d38da.js.map",
+    "static/css/2.92022463.chunk.css": "/Fake-movie-service---ReactJS/static/css/2.92022463.chunk.css",
+    "static/js/2.0c080672.chunk.js": "/Fake-movie-service---ReactJS/static/js/2.0c080672.chunk.js",
+    "static/js/2.0c080672.chunk.js.map": "/Fake-movie-service---ReactJS/static/js/2.0c080672.chunk.js.map",
+    "index.html": "/Fake-movie-service---ReactJS/index.html",
+    "precache-manifest.c5ff1bca0321b0d5fc2307a6e176d1dc.js": "/Fake-movie-service---ReactJS/precache-manifest.c5ff1bca0321b0d5fc2307a6e176d1dc.js",
+    "service-worker.js": "/Fake-movie-service---ReactJS/service-worker.js",
+    "static/css/2.92022463.chunk.css.map": "/Fake-movie-service---ReactJS/static/css/2.92022463.chunk.css.map",
+    "static/css/main.8bded530.chunk.css.map": "/Fake-movie-service---ReactJS/static/css/main.8bded530.chunk.css.map",
+    "static/js/2.0c080672.chunk.js.LICENSE.txt": "/Fake-movie-service---ReactJS/static/js/2.0c080672.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/Fake-movie-service---ReactJS/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.12c677e6.js",
-    "static/css/2.92164ad5.chunk.css",
-    "static/js/2.e5ef986f.chunk.js",
+    "static/js/runtime-main.706d38da.js",
+    "static/css/2.92022463.chunk.css",
+    "static/js/2.0c080672.chunk.js",
     "static/css/main.8bded530.chunk.css",
-    "static/js/main.e92be5a7.chunk.js"
+    "static/js/main.84a12bef.chunk.js"
   ]
 }
