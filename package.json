@@ -1,6 +1,6 @@
 {
-  "name": "fake-movie-service",
-  "homepage": "https://god-t.github.io/Fake-movie-service---ReactJS",
+  "name": "movie-archive-service",
+  "homepage": "https://god-t.github.io/Movie-archive-service---ReactJS",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
